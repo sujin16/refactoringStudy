@@ -1,0 +1,3 @@
+tnwls9712@naver.ciom = naver
+thwls9712@ajou.ac.kr = ajou
+tnwls9712@gmail.com = google

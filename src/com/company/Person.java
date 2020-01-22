@@ -9,15 +9,11 @@ public class Person {
         this.mail = mail;
     }
     public Person(Label name) {
-        this(name,null);
+        this(name,new NuLLabel());
     }
     public void display(){
-        if(name !=null){
-            name.display();
-        }
-        if(mail !=null){
-            mail.display();
-        }
+        name.display();
+        mail.display();
     }
 
     @Override

@@ -13,4 +13,8 @@ public class Label {
     public String toString() {
         return "\"" + label + "\"" ;
     }
+
+    public boolean isNull(){
+        return false;
+    }
 }

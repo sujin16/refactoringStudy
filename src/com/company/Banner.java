@@ -5,24 +5,24 @@ public class Banner {
     public Banner(String content) {
         this.content = content;
     }
+
     public void print(int times){
-        //Print Border
+        printBorder();
+        printContent(times);
+        printBorder();
+    }
+
+    private void printBorder(){
         System.out.print("+");
         for(int i=0;i<content.length();i++){
             System.out.print("-");
         }
         System.out.println("+");
 
-        //Print content
+    }
+    private void printContent(int times){
         for(int i=0;i<times;i++){
             System.out.println("|" +content+"|");
         }
-
-        //Print Border
-        System.out.print("+");
-        for(int i=0;i<content.length();i++){
-            System.out.print("-");
-        }
-        System.out.println("+");
     }
 }

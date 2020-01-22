@@ -10,18 +10,38 @@ public class SortSample {
     public void sort(){
         for(int x =0; x<data.length -1;x++){
             int m =x;
-            for(int y =x+1;y<data.length;y++){
+            for(int y =x+1;y<data.length-1;y++){
                 if(data[m] >data[y]){
                     m =y;
                 }
             }
-            //data[m] 은 data[x] ~ data[data.length -1]의 최솟값
+
+            assert isMin(m,x,data.length-1);//data[m] 은 data[x] ~ data[data.length -1]의 최솟값
             int v =data[m];
             data[m] = data[x];
             data[x] =v;
-            //data[0] ~ data[x+1]는 sort의 끝일 것.
+            assert isSorted(0,x+1);//data[0] ~ data[x+1]는 sort의 끝일 것.
         }
     }
+
+    public boolean isMin(int pos,int start, int end){
+        for(int i=start;i<end;i++){
+             if(data[pos]>data[i]){
+                 return false;
+               }
+        }
+        return true;
+    }
+
+    public boolean isSorted(int start, int end){
+        for(int i=start;i<end-1;i++){
+            if(data[i]>data[i+1]){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public String toString(){
         StringBuffer buffer = new StringBuffer();
         buffer.append("[");

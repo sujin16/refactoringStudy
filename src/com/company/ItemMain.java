@@ -3,17 +3,17 @@ package com.company;
 public class ItemMain {
     public static void main(String args[]){
         Item book = new Item(
-                Item.TYPECODE_BOOK,
+                ItemType.BOOK,
                 "world histoty",
                 4800
         );
         Item dvd = new Item(
-                Item.TYPECODE_DVD,
+                ItemType.DVD,
                 "dream of newYork",
                 3000
         );
         Item soft = new Item(
-                Item.TYPECODE_SOFRWARE,
+                ItemType.SOFTWARE,
                 "Turing machine",
                 3200
         );

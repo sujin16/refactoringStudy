@@ -1,35 +1,28 @@
 package com.company;
 
-public class Shape2 {
-    public static final int TYPECODE_LINE =0;
-    public static final int TYPECODE_RECTANGLE =1;
-    public static final int TYPECODE_OVAL =2;
+import java.util.concurrent.ArrayBlockingQueue;
 
-    private final int typecode ,startx,starty,endx,endy;
+public abstract class Shape2 {
+    private final int startx,starty,endx,endy;
 
-    private Shape2(int typecode, int startx, int starty, int endx, int endy) {
-        this.typecode = typecode;
+    protected Shape2(int startx, int starty, int endx, int endy) {
         this.startx = startx;
         this.starty = starty;
         this.endx = endx;
         this.endy = endy;
     }
 
-    public static  Shape2 create(int typecode, int startx, int starty, int endx, int endy){
-        return new Shape2(typecode, startx, starty, endx, endy);
-    }
+    public static Shape2 createLine(int startx, int starty, int endx, int endy){
+        return new ShapeLine2(startx,starty,endx, endy);
+    };
+    public static Shape2 createRectangle(int startx, int starty, int endx, int endy){
+        return new ShapeRectangle2(startx,starty,endx, endy);
+    };
+    public static Shape2 createOval(int startx, int starty, int endx, int endy){
+        return new ShapeOval2(startx,starty,endx, endy);
+    };
 
-    public int getTypecode() {
-        return typecode;
-    }
-    public String getName(){
-        switch (typecode){
-            case TYPECODE_LINE: return "line";
-            case TYPECODE_RECTANGLE: return "rectangle";
-            case TYPECODE_OVAL: return "oval";
-            default: return null;
-        }
-    }
+    public abstract  String getName();
 
     @Override
     public String toString() {
@@ -40,28 +33,6 @@ public class Shape2 {
                 ")";
     }
 
-    public void draw(){
-        switch (typecode){
-            case TYPECODE_LINE:
-                drawLine();
-                break;
-            case TYPECODE_RECTANGLE:
-                drawRectangle();
-                break;
-            case TYPECODE_OVAL:
-                drawOval();
-                break;
-            default: ;
-        }
-    }
-    public void drawLine(){
-        System.out.println("drawLine"+this.toString());
-    }
-    public void drawRectangle(){
-        System.out.println("drawRectangle"+this.toString());
-    }
-    public void drawOval(){
-        System.out.println("drawOval"+this.toString());
-    }
+    public abstract void draw();
 
 }

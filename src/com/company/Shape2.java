@@ -7,12 +7,16 @@ public class Shape2 {
 
     private final int typecode ,startx,starty,endx,endy;
 
-    public Shape2(int typecode, int startx, int starty, int endx, int endy) {
+    private Shape2(int typecode, int startx, int starty, int endx, int endy) {
         this.typecode = typecode;
         this.startx = startx;
         this.starty = starty;
         this.endx = endx;
         this.endy = endy;
+    }
+
+    public static  Shape2 create(int typecode, int startx, int starty, int endx, int endy){
+        return new Shape2(typecode, startx, starty, endx, endy);
     }
 
     public int getTypecode() {

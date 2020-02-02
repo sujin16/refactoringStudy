@@ -2,12 +2,12 @@ package com.company;
 
 import java.util.*;
 
-public class Command {
+public abstract class Command {
 
-    public static final  Command FORWARD = new Command("forward");
-    public static final  Command BACKWARD = new Command("backward");
-    public static final  Command TURN_RIGHT = new Command("right");
-    public static final  Command TURN_LEFT = new Command("left");
+    public static final  Command FORWARD = new Forward();
+    public static final  Command BACKWARD = new Backward();
+    public static final  Command TURN_RIGHT = new Right();
+    public static final  Command TURN_LEFT = new Left();
 
     private static final Map<String,Command> commandNameMap = new HashMap<String,Command>();
 
@@ -23,16 +23,58 @@ public class Command {
     }
     private final String name;
 
-    public Command(String name) {
+    //protected : 상속받은 외부 패키지의 클래스에서 접근이 가능하다.
+    protected Command(String name) {
         this.name = name;
     }
 
-    public static Command pareCommand(String name){
+    public static Command pareCommand(String name) throws InvalidCommandException{
         if (!commandNameMap.containsKey(name)) {
-            return null;
+            throw  new InvalidCommandException(name);
         }
         return commandNameMap.get(name);
     }
+    public abstract void execute(Robot robot);
 
+    private static  class Forward extends Command{
+        public Forward(){
+            super("forward`");
+        }
+
+        @Override
+        public void execute(Robot robot) {
+            robot.forward();
+        }
+    }
+    private static class Backward extends Command{
+        public Backward(){
+            super("backward`");
+        }
+
+        @Override
+        public void execute(Robot robot) {
+            robot.backward();
+        }
+    }
+    private static class Right extends Command{
+        public Right(){
+            super("right`");
+        }
+
+        @Override
+        public void execute(Robot robot) {
+            robot.right();
+        }
+    }
+    private static class Left extends Command{
+        public Left(){
+            super("left`");
+        }
+
+        @Override
+        public void execute(Robot robot) {
+            robot.left();
+        }
+    }
 
 }

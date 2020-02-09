@@ -20,32 +20,32 @@ public class IntegerDisplay extends Frame implements ActionListener,ValueListene
 
     private Value value =new Value(0);
 
+    private final Graph graphCircle =Graph.createGraph(Graph.CIRCLE,100,100);
+    private final Graph graphRectangle =Graph.createGraph(Graph.RECTANGLE,100,150);
+
     public IntegerDisplay() {
         super("IntegerDisplay");
-        setLayout(new GridLayout(4,2));
-        setPreferredSize(new Dimension(500,300));
+        setLayout(new BorderLayout());
 
-        add(new Label("Octal:")).setFont(font);
-        add(octoLabel);
-        octoLabel.setFont(font);
+        Panel panel =new Panel(new GridLayout(4,2));
+        panel.add(new Label("Octal: ")).setFont(font);
+        panel.add(octoLabel).setFont(font);
+        panel.add(new Label("Decimal : ")).setFont(font);
+        panel.add(decimalLabel).setFont(font);
+        panel.add(new Label("Hexadecimal : ")).setFont(font);
+        panel.add(hexadecimalLabel).setFont(font);
+        panel.add(incrementButton).setFont(font);
+        panel.add(decrementButton).setFont(font);
 
-        add(new Label("Decimal:")).setFont(font);
-        add(decimalLabel);
-        decimalLabel.setFont(font);
-
-        add(new Label("Hexadcimal:")).setFont(font);
-        add(hexadecimalLabel);
-        hexadecimalLabel.setFont(font);
-
-        add(incrementButton);
-        add(decrementButton);
+        add(panel,BorderLayout.NORTH);
+        add(graphCircle,BorderLayout.CENTER);
+        add(graphRectangle,BorderLayout.SOUTH);
 
         incrementButton.addActionListener(this);
-        incrementButton.setFont(font);
         decrementButton.addActionListener(this);
-        incrementButton.setFont(font);
-
         value.addValueListener(this);
+        value.addValueListener(graphCircle);
+        value.addValueListener(graphRectangle);
 
         addWindowListener(new WindowAdapter() {
             @Override

@@ -8,9 +8,9 @@ public class Dice {
     private final Random random;
 
     public Dice() {
-        this.random =new Random(314159L);
+       this(314159L);
     }
-    public Dice(int seed) {
+    public Dice(long seed) {
         this.random =new Random(seed);
     }
     public int nextInt(){

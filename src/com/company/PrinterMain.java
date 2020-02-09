@@ -12,6 +12,8 @@ public class PrinterMain {
         2. Client Class와 Main Class 수정
          */
 
+        new Client(Printer.TYPECODE_DIGIT).execute();
+        new Client(Printer.TYPECODE_GRAPHIC).execute();
 
 
     }

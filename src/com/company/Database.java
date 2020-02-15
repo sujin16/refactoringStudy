@@ -3,6 +3,7 @@ package com.company;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Properties;
 
 public class Database {
@@ -35,4 +36,7 @@ public class Database {
         return properties;
     }
 
+    public Enumeration keys(){
+        return properties.propertyNames();
+    }
 }

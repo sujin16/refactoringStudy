@@ -7,10 +7,10 @@ public class AddressMain {
     public static void main(String args[]){
         try{
             AddressFile file = new AddressFile("address.txt");
-            file.getDatabase().set("Hiroshi Yuki","hyuki@example.com");
-            file.getDatabase().set("Tomura","tomura@example.com");
-            file.getDatabase().set("Hanako","hanko@example.com");
-            file.getDatabase().update();
+            file.set("Hiroshi Yuki","hyuki@example.com");
+            file.set("Tomura","tomura@example.com");
+            file.set("Hanako","hanko@example.com");
+            file.update();
             Enumeration e  = file.names();
 
             while (e.hasMoreElements()){

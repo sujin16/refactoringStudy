@@ -15,7 +15,7 @@ public class AddressMain {
 
             while (e.hasMoreElements()){
                 String name = (String)e.nextElement();
-                String mail= file.getDatabase().get(name);
+                String mail= file.get(name);
                 System.out.println("name = "+name+ ", "+"mail="+mail);
             }
         }catch (IOException e){
